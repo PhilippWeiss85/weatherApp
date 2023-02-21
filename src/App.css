@@ -5,6 +5,10 @@ main {
   align-items: center;
 }
 
+.flexbox{
+  display: flex;
+}
+
 h1 {
   margin-top: 0;
 }
@@ -51,7 +55,7 @@ h1 {
   align-items: center;
 }
 
-.weather__sunny {
+.weather__icon {
   display: flex;
   gap: 1rem;
   align-items: center

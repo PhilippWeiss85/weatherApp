@@ -3,6 +3,9 @@ import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import sunnyIcon from "./icon_sunny.png";
+import cloudyIcon from "./icon_cloudy.png";
+import snowyIcon from "./icon_snow.png";
+import rainyIcon from "./icon_rain.png";
 import useSWR from "swr";
 import { useState } from "react";
 import { BarLoader } from "react-spinners";
@@ -10,7 +13,7 @@ import { BarLoader } from "react-spinners";
 const baseUrl = "https://goweather.herokuapp.com/weather/";
 
 function App() {
-  const [city, setCity] = useState("Curitiba");
+  const [city, setCity] = useState();
   const [fetchError, setFetchError] = useState(false);
 
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
@@ -58,32 +61,62 @@ function App() {
 
   // debounce function suchen für onChange event in form
 
+  let windspeedInt = parseInt(weather.wind);
+  console.log(parseInt(windspeedInt));
+
+  let temperatureInt = parseInt(weather.temperature);
+  console.log(temperatureInt);
+
   function tempEmoji(description) {
     switch (description) {
       case "Sunny":
         return (
-          <div className="weather__sunny">
+          <div className="weather__icon">
             <img
               src={sunnyIcon}
               alt="sunny"
-              style={{ width: "1rem", height: "1rem" }}
+              style={{ width: "1rem", height: "1.2rem" }}
             />
             {description}
           </div>
         );
-      case "Cloudy":
+      case "Partly cloudy":
+      case "mist":
+      case "drizzle":
         return (
-          <div className="weather__sunny">
+          <div className="weather__icon">
             <img
-              src={sunnyIcon}
+              src={cloudyIcon}
               alt="sunny"
-              style={{ width: "1rem", height: "1rem" }}
+              style={{ width: "1.5rem", height: "1.2rem" }}
+            />
+            {description}
+          </div>
+        );
+      case "Light drizzle and raining":
+      case "Light rain":
+        return (
+          <div className="weather__icon">
+            <img
+              src={rainyIcon}
+              alt="sunny"
+              style={{ width: "1.5rem", height: "1.2rem" }}
+            />
+            {description}
+          </div>
+        );
+      case "Light snow":
+        return (
+          <div className="weather__icon">
+            <img
+              src={snowyIcon}
+              alt="sunny"
+              style={{ width: "1.5rem", height: "1.2rem" }}
             />
             {description}
           </div>
         );
       default:
-        return "DEFAULT";
     }
   }
 
