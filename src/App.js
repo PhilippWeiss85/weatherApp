@@ -1,6 +1,8 @@
 import "./App.css";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import sunnyIcon from "./icon_sunny.png";
 import useSWR from "swr";
 import { useState } from "react";
 import { BarLoader } from "react-spinners";
@@ -56,6 +58,35 @@ function App() {
 
   // debounce function suchen für onChange event in form
 
+  function tempEmoji(description) {
+    switch (description) {
+      case "Sunny":
+        return (
+          <div className="weather__sunny">
+            <img
+              src={sunnyIcon}
+              alt="sunny"
+              style={{ width: "1rem", height: "1rem" }}
+            />
+            {description}
+          </div>
+        );
+      case "Cloudy":
+        return (
+          <div className="weather__sunny">
+            <img
+              src={sunnyIcon}
+              alt="sunny"
+              style={{ width: "1rem", height: "1rem" }}
+            />
+            {description}
+          </div>
+        );
+      default:
+        return "DEFAULT";
+    }
+  }
+
   if (data)
     return (
       <>
@@ -76,14 +107,8 @@ function App() {
             )}
 
             <div>
-              {/*           {currentWeather.description.includes("snow") === true ? (
-            <BsSnow />
-          ) : 
-          currentWeather.description.includes("sunny") === true ? (  <BsFillSunFill />) :
-          (
-            currentWeather.description.includes("sunny") === true ? (  <BsFillSunFill />) 
-          )}  */}
-              <div>{weather.description}</div>
+              {tempEmoji(weather.description)}
+
               <div>{weather.temperature} </div>
               <div>{weather.wind} </div>
             </div>
