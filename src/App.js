@@ -20,6 +20,8 @@ function App() {
   const { data, error, isLoading } = useSWR(baseUrl + city, fetcher);
 
   const weather = data;
+  const fetchMessage = data.message;
+  console.log("fetchmessage", fetchMessage);
 
   console.log("fetch", data);
   console.log("city", city);
@@ -133,12 +135,13 @@ function App() {
                 search
               </button>
             </form>
-            {fetchError !== true ? (
-              <h2>The Weather in {city}</h2>
+            {fetchMessage === "NOT_FOUND" ? (
+              <h2>The API is unable to find your city</h2>
+            ) : fetchError !== true ? (
+              <h2>The Weather in {city.toUpperCase()}</h2>
             ) : (
               <h2>An error occured. Please try again later</h2>
             )}
-
             <div>
               {tempEmoji(weather.description)}
 
