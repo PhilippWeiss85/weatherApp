@@ -10,6 +10,8 @@ import useSWR from "swr";
 import { useCallback, useState } from "react";
 import { BarLoader } from "react-spinners";
 
+import { BiSearch } from "react-icons/bi";
+
 const baseUrl = "https://goweather.herokuapp.com/weather/";
 
 function App() {
@@ -105,9 +107,24 @@ function App() {
 
   if (isLoading)
     return (
-      <div className="loadingscreen">
-        <BarLoader color="#36d7b7" height={10} width={300} />
-      </div>
+      <>
+        <Header />
+        <main>
+          <section>
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="city">Enter your City</label>
+              <input name="city" id="city" type="text" />
+              <button type="submit" id="sumbit">
+                search
+              </button>
+            </form>
+            <div className="loadingcontainer">
+              <BarLoader color="#36d7b7" height={10} width={300} />
+            </div>
+          </section>
+        </main>
+        <Footer />
+      </>
     );
 
   function handleSubmit(event) {
