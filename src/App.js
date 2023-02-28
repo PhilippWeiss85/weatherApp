@@ -43,7 +43,7 @@ function App() {
           <div className="weather__icon">
             <img
               src={cloudyIcon}
-              alt="sunny"
+              alt="cloudy"
               style={{ width: "1.5rem", height: "1.2rem" }}
             />
             {description}
@@ -55,7 +55,7 @@ function App() {
           <div className="weather__icon">
             <img
               src={rainyIcon}
-              alt="sunny"
+              alt="rainy"
               style={{ width: "1.5rem", height: "1.2rem" }}
             />
             {description}
@@ -66,7 +66,7 @@ function App() {
           <div className="weather__icon">
             <img
               src={snowyIcon}
-              alt="sunny"
+              alt="snowy"
               style={{ width: "1.5rem", height: "1.2rem" }}
             />
             {description}
