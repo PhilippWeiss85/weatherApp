@@ -1,3 +1,4 @@
+import "./Header.css";
 import lottie from "lottie-web";
 import { useEffect, useRef } from "react";
 
@@ -16,9 +17,9 @@ export default function Header() {
   }, []);
 
   return (
-    <section className="header">
+    <header>
       <div className="container" ref={container}></div>
       <h1>Your weather app</h1>
-    </section>
+    </header>
   );
 }
