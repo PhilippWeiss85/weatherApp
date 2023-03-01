@@ -17,7 +17,6 @@ function TodaysWeather({
   };
   var today = new Date().toLocaleTimeString("de-de", dateOptions);
 
-  const weekDays = ["mo", "di", "mi", "do", "fr", "sa", "so"];
   const currentDate = today.slice(0, -10);
 
   return (
