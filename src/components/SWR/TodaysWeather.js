@@ -10,10 +10,16 @@ function TodaysWeather({
   weather,
   tempEmoji,
 }) {
-  const momentToday = moment().locale("de").format("LL");
-  const momentTomorrow = moment().add(1, "d").locale("de").format("LL");
-  const momentTomorrowPlusOne = moment().add(2, "d").locale("de").format("LL");
-  const momentTomorrowPlusTwo = moment().add(3, "d").locale("de").format("LL");
+  const momentToday = moment().locale("de").format("dddd, ll");
+  const momentTomorrow = moment().add(1, "d").locale("de").format("dddd, ll");
+  const momentTomorrowPlusOne = moment()
+    .add(2, "d")
+    .locale("de")
+    .format("dddd, ll");
+  const momentTomorrowPlusTwo = moment()
+    .add(3, "d")
+    .locale("de")
+    .format("dddd, ll");
 
   console.log("moment", momentToday);
   console.log(momentTomorrow);

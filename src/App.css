@@ -60,22 +60,19 @@ button {
 .forecast__container {
   display: flex;
   gap: 20px;
-  background-color: lightblue
 
 }
 
 
 
-.forecast__containercontent__box__headline {
-  background-color: red
-}
 
 .forecast__containercontent__box {
   margin: 1rem;
 }
 
 .forecast-headline {
-  background-color: blue;
+  box-shadow:inset 0 3px 3px rgba(0, 0, 0, 0.1),
+  0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
   margin: 0;
   padding: 0.3rem
 }
