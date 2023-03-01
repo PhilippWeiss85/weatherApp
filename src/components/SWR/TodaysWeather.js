@@ -11,8 +11,15 @@ function TodaysWeather({
   tempEmoji,
 }) {
   const momentToday = moment().locale("de").format("LL");
+  const momentTomorrow = moment().add(1, "d").locale("de").format("LL");
+  const momentTomorrowPlusOne = moment().add(2, "d").locale("de").format("LL");
+  const momentTomorrowPlusTwo = moment().add(3, "d").locale("de").format("LL");
 
   console.log("moment", momentToday);
+  console.log(momentTomorrow);
+  console.log(momentTomorrowPlusOne);
+  console.log(momentTomorrowPlusTwo);
+
   return (
     <section>
       {fetchMessage === "NOT_FOUND" ? (
@@ -51,7 +58,12 @@ function TodaysWeather({
               : weather.forecast?.map((day, index) => {
                   return (
                     <div key={index}>
-                      <Forecast day={day} momentToday={momentToday} />
+                      <Forecast
+                        day={day}
+                        tomorrow={momentTomorrow}
+                        tomorrowPlusOne={momentTomorrowPlusOne}
+                        tomorrowPlusTwo={momentTomorrowPlusTwo}
+                      />
                     </div>
                   );
                 })}

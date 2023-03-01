@@ -1,6 +1,6 @@
 import React from "react";
 
-function Forecast({ day, momentToday }) {
+function Forecast({ day, tomorrow, tomorrowPlusOne, tomorrowPlusTwo }) {
   return (
     <section>
       <div className="flexbox">
@@ -8,16 +8,15 @@ function Forecast({ day, momentToday }) {
           <aside className="forecast__containercontent__box__headline">
             {day.day === "1" ? (
               <div className="forecast-headline">
-                <p>Tomorrow</p>
-                <p>{momentToday.add(7, "d")}</p>
+                <p>{tomorrow}</p>
               </div>
             ) : day.day === "2" ? (
               <div className="forecast-headline">
-                <p>The day after tomorrow</p>
+                <p>{tomorrowPlusOne}</p>
               </div>
             ) : (
               <div className="forecast-headline">
-                <p>The 3rd day</p>
+                <p>{tomorrowPlusTwo}</p>
               </div>
             )}
           </aside>
