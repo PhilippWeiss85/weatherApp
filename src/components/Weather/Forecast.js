@@ -1,10 +1,11 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 function Forecast({ day, tomorrow, tomorrowPlusOne, tomorrowPlusTwo }) {
   return (
     <section>
       <div className="flexbox">
-        <div>
+        <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
           <aside className="forecast__containercontent__box__headline">
             {day.day === "1" ? (
               <div className="forecast-headline">
@@ -24,7 +25,7 @@ function Forecast({ day, tomorrow, tomorrowPlusOne, tomorrowPlusTwo }) {
             {day.temperature}
           </aside>
           <aside className="forecast__containercontent__box">{day.wind}</aside>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
