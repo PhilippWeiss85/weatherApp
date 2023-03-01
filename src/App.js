@@ -100,8 +100,8 @@ function App() {
   if (error)
     return (
       <>
-        <Header />
-        <Error handleSubmit={handleSubmit} />
+        <Header handleSubmit={handleSubmit} />
+        <Error />
         <Footer />
       </>
     );
@@ -109,8 +109,8 @@ function App() {
   if (isLoading)
     return (
       <>
-        <Header />
-        <Loading handleSubmit={handleSubmit} />
+        <Header handleSubmit={handleSubmit} />
+        <Loading />
         <Footer />
       </>
     );
@@ -127,10 +127,9 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header handleSubmit={handleSubmit} />
       <main>
         <TodaysWeather
-          handleSubmit={handleSubmit}
           fetchMessage={fetchMessage}
           fetchError={fetchError}
           data={data}

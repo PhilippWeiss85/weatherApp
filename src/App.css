@@ -6,8 +6,15 @@ main {
   margin-bottom: 5rem;
 }
 
+.city_todayname {
+  
+  margin: 0
+}
+
 .city__today {
-  display: flex
+  display: flex;
+  justify-content: space-between;
+  gap: 20px
 }
 
 form {
@@ -52,19 +59,34 @@ button {
 
 .forecast__container {
   display: flex;
+  gap: 20px;
+  background-color: lightblue
 
 }
 
 .forecast__containercontent {
-  background-color: lightblue;
+  
+  
 
+}
+
+.forecast__containercontent__box__headline {
+  background-color: red
 }
 
 .forecast__containercontent__box {
   margin: 1rem;
 }
 
+.forecast-headline {
+  background-color: blue;
+  margin: 0;
+  padding: 0.3rem
+}
 
+.forecast-headline:hover {
+  background-color: red
+}
 
 h1 {
   margin-top: 0;

@@ -1,8 +1,6 @@
 import Forecast from "../Weather/Forecast";
-import Form from "../Form";
 
 function TodaysWeather({
-  handleSubmit,
   fetchMessage,
   fetchError,
   data,
@@ -10,39 +8,57 @@ function TodaysWeather({
   weather,
   tempEmoji,
 }) {
+  var dateOptions = {
+    weekday: "short",
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    hour12: false,
+  };
+  var today = new Date().toLocaleTimeString("de-de", dateOptions);
+
+  const weekDays = ["mo", "di", "mi", "do", "fr", "sa", "so"];
+  const currentDate = today.slice(0, -10);
+
   return (
     <section>
-      <Form handleSubmit={handleSubmit} />
-
       {fetchMessage === "NOT_FOUND" ? (
         <h2>Unable to find your city. Please try again</h2>
       ) : fetchError !== true ? (
-        <h2>
-          {city !== undefined
-            ? `The Weather in ${city?.charAt(0).toUpperCase() + city?.slice(1)}`
-            : "Please enter a valid city"}
-        </h2>
+        <>
+          {city !== undefined ? (
+            <div className="city__today">
+              <article>
+                <p className="city_todayname">
+                  Weather in {city?.charAt(0).toUpperCase() + city?.slice(1)}
+                </p>
+                <p>{currentDate}</p>
+              </article>
+              <article>
+                {tempEmoji(weather.description)}
+                <div>{weather.temperature} degree</div>
+                <div>{weather.wind} windspeed</div>
+              </article>
+            </div>
+          ) : (
+            ""
+          )}
+        </>
       ) : (
         <h2>An error occured. Please try again later</h2>
       )}
 
       {data && (
         <>
-          <div>
-            {tempEmoji(weather.description)}
-            <div>{weather.temperature} </div>
-            <div>{weather.wind} </div>
-          </div>
-
           {fetchMessage !== "NOT_FOUND" ? <h2>Forecast</h2> : <h2>{null}</h2>}
           <article className="forecast__container">
             {fetchMessage === "NOT_FOUND"
               ? ""
-              : weather.forecast?.map((day) => {
+              : weather.forecast?.map((day, index) => {
                   return (
-                    <>
-                      <Forecast day={day} key={day.index} />
-                    </>
+                    <div key={index}>
+                      <Forecast day={day} />
+                    </div>
                   );
                 })}
           </article>
