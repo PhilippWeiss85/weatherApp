@@ -1,4 +1,6 @@
 import "./App.css";
+import Error from "./components/SWR/Error";
+import Loading from "./components/SWR/Loading";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -8,9 +10,8 @@ import snowyIcon from "./icon_snow.png";
 import rainyIcon from "./icon_rain.png";
 import useSWR from "swr";
 import { useCallback, useState } from "react";
-import { BarLoader } from "react-spinners";
 
-import { BiSearch } from "react-icons/bi";
+import TodaysWeather from "./components/SWR/TodaysWeather";
 
 const baseUrl = "https://goweather.herokuapp.com/weather/";
 
@@ -81,51 +82,8 @@ function App() {
   const weather = data;
   const fetchMessage = data?.message;
   console.log("fetchmessage", fetchMessage);
-
   console.log("fetch", data);
   console.log("city", city);
-
-  if (error)
-    return (
-      <>
-        <Header />
-        <main>
-          <section>
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="city">Enter your City</label>
-              <input name="city" id="city" type="text" />
-              <button type="submit" id="sumbit">
-                search
-              </button>
-            </form>
-            <h2>An error occured. Please try again later</h2>
-          </section>
-        </main>
-        <Footer />
-      </>
-    );
-
-  if (isLoading)
-    return (
-      <>
-        <Header />
-        <main>
-          <section>
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="city">Enter your City</label>
-              <input name="city" id="city" type="text" />
-              <button type="submit" id="sumbit">
-                search
-              </button>
-            </form>
-            <div className="loadingcontainer">
-              <BarLoader color="#36d7b7" height={10} width={300} />
-            </div>
-          </section>
-        </main>
-        <Footer />
-      </>
-    );
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -139,6 +97,24 @@ function App() {
     }
   }
 
+  if (error)
+    return (
+      <>
+        <Header handleSubmit={handleSubmit} />
+        <Error />
+        <Footer />
+      </>
+    );
+
+  if (isLoading)
+    return (
+      <>
+        <Header handleSubmit={handleSubmit} />
+        <Loading />
+        <Footer />
+      </>
+    );
+
   // debounce function suchen für onChange event in form
 
   let windspeedInt = parseInt(weather?.wind);
@@ -151,50 +127,16 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header handleSubmit={handleSubmit} />
       <main>
-        <section>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="city">Enter your City</label>
-            <input name="city" id="city" type="text" />
-            <button type="submit" id="sumbit">
-              search
-            </button>
-          </form>
-          {fetchMessage === "NOT_FOUND" ? (
-            <h2>Unable to find your city. Please try again</h2>
-          ) : fetchError !== true ? (
-            <h2>
-              {city !== undefined
-                ? `The Weather in ${
-                    city?.charAt(0).toUpperCase() + city?.slice(1)
-                  }`
-                : "Please enter a valid city"}
-            </h2>
-          ) : (
-            <h2>An error occured. Please try again later</h2>
-          )}
-          {data && (
-            <>
-              <div>
-                {tempEmoji(weather.description)}
-                <div>{weather.temperature} </div>
-                <div>{weather.wind} </div>
-              </div>
-
-              {fetchMessage === "NOT_FOUND" ? "" : <h2>Forecast</h2>}
-              {weather.forecast?.map((day) => {
-                return (
-                  <div className="flexbox" key={day.day}>
-                    <p>{day.day}</p>
-                    <p>{day.temperature}</p>
-                    <p>{day.wind}</p>
-                  </div>
-                );
-              })}
-            </>
-          )}
-        </section>
+        <TodaysWeather
+          fetchMessage={fetchMessage}
+          fetchError={fetchError}
+          data={data}
+          city={city}
+          weather={weather}
+          tempEmoji={tempEmoji}
+        />
       </main>
       <Footer />
     </>

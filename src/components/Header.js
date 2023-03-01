@@ -1,7 +1,9 @@
+import "./Header.css";
 import lottie from "lottie-web";
 import { useEffect, useRef } from "react";
+import Form from "./Form";
 
-export default function Header() {
+export default function Header({ handleSubmit }) {
   const container = useRef(null);
 
   useEffect(() => {
@@ -16,9 +18,12 @@ export default function Header() {
   }, []);
 
   return (
-    <section className="header">
+    <header>
       <div className="container" ref={container}></div>
-      <h1>Your weather app</h1>
-    </section>
+      <div className="header__container">
+        <h1>Your weather app</h1>
+        <Form handleSubmit={handleSubmit} />
+      </div>
+    </header>
   );
 }
