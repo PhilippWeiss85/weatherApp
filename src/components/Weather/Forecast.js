@@ -1,14 +1,15 @@
 import React from "react";
 
-function Forecast({ day }) {
+function Forecast({ day, momentToday }) {
   return (
     <section>
       <div className="flexbox">
-        <div className="forecast__containercontent">
+        <div>
           <aside className="forecast__containercontent__box__headline">
             {day.day === "1" ? (
               <div className="forecast-headline">
                 <p>Tomorrow</p>
+                <p>{momentToday.add(7, "d")}</p>
               </div>
             ) : day.day === "2" ? (
               <div className="forecast-headline">

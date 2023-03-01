@@ -1,4 +1,6 @@
 import Forecast from "../Weather/Forecast";
+import moment from "moment";
+import "moment/locale/de";
 
 function TodaysWeather({
   fetchMessage,
@@ -8,17 +10,9 @@ function TodaysWeather({
   weather,
   tempEmoji,
 }) {
-  var dateOptions = {
-    weekday: "short",
-    year: "numeric",
-    month: "numeric",
-    day: "numeric",
-    hour12: false,
-  };
-  var today = new Date().toLocaleTimeString("de-de", dateOptions);
+  const momentToday = moment().locale("de").format("LL");
 
-  const currentDate = today.slice(0, -10);
-
+  console.log("moment", momentToday);
   return (
     <section>
       {fetchMessage === "NOT_FOUND" ? (
@@ -31,8 +25,9 @@ function TodaysWeather({
                 <p className="city_todayname">
                   Weather in {city?.charAt(0).toUpperCase() + city?.slice(1)}
                 </p>
-                <p>{currentDate}</p>
+                <p>{momentToday}</p>
               </article>
+
               <article>
                 {tempEmoji(weather.description)}
                 <div>{weather.temperature} degree</div>
@@ -56,7 +51,7 @@ function TodaysWeather({
               : weather.forecast?.map((day, index) => {
                   return (
                     <div key={index}>
-                      <Forecast day={day} />
+                      <Forecast day={day} momentToday={momentToday} />
                     </div>
                   );
                 })}

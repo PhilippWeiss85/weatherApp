@@ -1,12 +1,27 @@
 import { IconContext } from "react-icons";
 import { BiSearch } from "react-icons/bi";
+import { useState } from "react";
 
-function Form({ handleSubmit }) {
+function Form({ handleSubmit, handleChange }) {
+  const [value, setValue] = useState("");
+
+  function handleChange(event) {
+    setValue(
+      event.target.value.charAt(0).toUpperCase() + event.target.value.slice(1)
+    );
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="city">Enter your City</label>
       <fieldset>
-        <input name="city" id="city" type="text" />
+        <input
+          name="city"
+          id="city"
+          type="text"
+          value={value}
+          onChange={handleChange}
+        />
         <button type="submit" id="sumbit">
           <IconContext.Provider
             value={{
