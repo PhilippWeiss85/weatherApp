@@ -2,7 +2,7 @@ import { IconContext } from "react-icons";
 import { BiSearch } from "react-icons/bi";
 import { useState } from "react";
 
-function Form({ handleSubmit, handleChange }) {
+function Form({ handleSubmit }) {
   const [value, setValue] = useState("");
 
   function handleChange(event) {

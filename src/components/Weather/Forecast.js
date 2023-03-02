@@ -1,31 +1,34 @@
-import React from "react";
-import { motion } from "framer-motion";
-
 function Forecast({ day, tomorrow, tomorrowPlusOne, tomorrowPlusTwo }) {
   return (
     <section>
-      <div className="flexbox">
-        <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
-          <aside className="forecast__containercontent__box__headline">
-            {day.day === "1" ? (
-              <div className="forecast-headline">
-                <p>{tomorrow}</p>
+      <div className="forecast-flexbox">
+        <aside className="forecast__containercontent__box__headline">
+          {day.day === "1" ? (
+            <div className="forecast-content">
+              <p>{tomorrow}</p>
+              <div className="forecast-content__values">
+                <p>{day.temperature}</p>
+                <p>{day.wind}</p>
               </div>
-            ) : day.day === "2" ? (
-              <div className="forecast-headline">
-                <p>{tomorrowPlusOne}</p>
+            </div>
+          ) : day.day === "2" ? (
+            <div className="forecast-content">
+              <p>{tomorrowPlusOne}</p>
+              <div className="forecast-content__values">
+                <p>{day.temperature}</p>
+                <p>{day.wind}</p>
               </div>
-            ) : (
-              <div className="forecast-headline">
-                <p>{tomorrowPlusTwo}</p>
+            </div>
+          ) : (
+            <div className="forecast-content">
+              <p>{tomorrowPlusTwo}</p>
+              <div className="forecast-content__values">
+                <p>{day.temperature}</p>
+                <p>{day.wind}</p>
               </div>
-            )}
-          </aside>
-          <aside className="forecast__containercontent__box">
-            {day.temperature}
-          </aside>
-          <aside className="forecast__containercontent__box">{day.wind}</aside>
-        </motion.div>
+            </div>
+          )}
+        </aside>
       </div>
     </section>
   );

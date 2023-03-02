@@ -1,20 +1,53 @@
+:root {
+  --backgroundheader: linear-gradient( #9198e5, #ffffff);
+
+}
+
 main {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-bottom: 5rem;
+
 }
 
-.city_todayname {
 
+p {
   margin: 0
 }
 
 .city__today {
   display: flex;
-  justify-content: space-between;
-  gap: 20px
+  gap: 2rem;
+
+ 
+}
+
+.city__today__article {
+  box-shadow:
+  0 0 9px 5px #fff,  /* inner white */
+  0 0 15px #8198e5; /* outer cyan */
+  height: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem
+  
+}
+
+.city__today__article-values {
+  box-shadow:
+  0 0 9px 5px #fff,  /* inner white */
+  0 0 15px #8198e5; /* outer cyan */
+  height: 100px;
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start
 }
 
 form {
@@ -51,16 +84,20 @@ button {
   cursor: pointer;
 }
 
-.flexbox{
+.forecast-content {
   display: flex;
-  justify-content: center;
-  
+  justify-content: space-between;
+  padding: 1rem 0.5rem 1rem 0.5rem;
+
+}
+
+.forecast-content__values {
+  display: flex;
+  flex-direction: column;
 }
 
 .forecast__container {
-  display: flex;
-  gap: 20px;
-
+margin-top: 2rem
 }
 
 
@@ -68,17 +105,15 @@ button {
 
 .forecast__containercontent__box {
   margin: 1rem;
+
 }
 
-.forecast-headline {
-  box-shadow:inset 0 3px 3px rgba(0, 0, 0, 0.1),
-  0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
-  margin: 0;
-  padding: 0.3rem
-}
+
 
 .forecast-headline:hover {
-  background-color: rgba(0, 0, 0, 0.3)
+  box-shadow:
+  0 0 9px 5px #fff,  /* inner white */
+  0 0 15px #8198e5; /* outer cyan */
 }
 
 h1 {
@@ -111,4 +146,14 @@ h1 {
   display: flex;
   gap: 1rem;
   align-items: center
+}
+
+.expandbutton {
+  font-size: 1.5rem;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0
 }

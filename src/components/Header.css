@@ -3,18 +3,18 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: lightblue;
+    background: var(--backgroundheader);
     width: 100%;
     height: 130px;
     margin-bottom: 1rem;
     flex-wrap: wrap;
   }
 
-@media(max-width: 470px) {
+@media(max-width: 640px) and (min-width: 421px) {
   header {
-    height: 220px;
-    align-items: flex-start;
-    
+    height: 100px;
+    flex-wrap: wrap
+  
     
 }
   h1 {
@@ -23,17 +23,40 @@ header {
   }
 
   .container {
-    width: 80px;
-    height: 80px;
+    width: 100px !important;
+    height: 100px !important;
+    position: relative !important;
+  }
+}
+
+@media(max-width: 420px) and (min-width:  290px) {
+  header {
+    height: 160px;
+    
+  
+    
+}
+  h1 {
+    font-size: 1.5em;
+    text-align: center
+  }
+
+  .container {
+    width: 80px !important;
+    height: 80px !important;
+    position: relative !important;
   }
 }
 
 h1 {
-    margin: 0
+    margin-bottom: 0.8rem;
+    text-align: center;
   }
 
 .container {
     width: 150px;
     height: 150px;
     left: 0;
+    position: absolute;
+  
   }

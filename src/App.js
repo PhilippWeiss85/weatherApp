@@ -82,8 +82,6 @@ function App() {
   const weather = data;
   const fetchMessage = data?.message;
   console.log("fetchmessage", fetchMessage);
-  console.log("fetch", data);
-  console.log("city", city);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -122,8 +120,6 @@ function App() {
 
   let temperatureInt = parseInt(weather?.temperature);
   console.log(temperatureInt);
-
-  // hier ne if abfrage oder danach für das includes()
 
   return (
     <>
