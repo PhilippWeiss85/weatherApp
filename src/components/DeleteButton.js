@@ -1,3 +1,3 @@
-export default function DeleteButton({ children }) {
-  return <button onClick={console.log(children)}>{children}</button>;
+export default function DeleteButton({ children, deleteSearchItem, id }) {
+  return <button onClick={() => deleteSearchItem(id)}>{children}</button>;
 }

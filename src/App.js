@@ -84,14 +84,14 @@ function App() {
   const fetchMessage = data?.message;
   console.log("fetchmessage", fetchMessage);
 
-  function addNewSearchItem(content) {
+  function addNewSearchItem(cityname) {
     if (
-      previousSearchItems.includes(content) ||
+      previousSearchItems.includes(cityname.name) ||
       previousSearchItems.length > 2
     ) {
       setPreviousSearchItems(previousSearchItems);
     } else {
-      const newSearchItem = [content, ...previousSearchItems];
+      const newSearchItem = [{ name: cityname }, ...previousSearchItems];
       setPreviousSearchItems(newSearchItem);
     }
   }
@@ -101,13 +101,21 @@ function App() {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    console.log("forminput", data);
     if (data.city === "undefined") {
       setCity(null);
     } else {
       addNewSearchItem(data.city);
       setCity(data.city);
     }
+  }
+
+  function deleteSearchItem(id) {
+    console.log("name", id);
+
+    const searchItemsAfterDeletion = previousSearchItems.filter((item) => {
+      return item.name !== id;
+    });
+    setPreviousSearchItems(searchItemsAfterDeletion);
   }
 
   // debounce function suchen für onChange event in form
@@ -124,6 +132,7 @@ function App() {
         <Header
           handleSubmit={handleSubmit}
           previousSearchItems={previousSearchItems}
+          deleteSearchItem={deleteSearchItem}
         />
         <Error />
         <Footer />
@@ -136,6 +145,7 @@ function App() {
         <Header
           handleSubmit={handleSubmit}
           previousSearchItems={previousSearchItems}
+          deleteSearchItem={deleteSearchItem}
         />
         <Loading />
         <Footer />
@@ -147,6 +157,7 @@ function App() {
       <Header
         handleSubmit={handleSubmit}
         previousSearchItems={previousSearchItems}
+        deleteSearchItem={deleteSearchItem}
       />
       <main>
         <TodaysWeather

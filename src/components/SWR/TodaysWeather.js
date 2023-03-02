@@ -40,11 +40,6 @@ function TodaysWeather({
     .locale("de")
     .format("dddd, l");
 
-  console.log("moment", momentToday);
-  console.log(momentTomorrow);
-  console.log(momentTomorrowPlusOne);
-  console.log(momentTomorrowPlusTwo);
-
   return (
     <section>
       {fetchMessage === "NOT_FOUND" ? (

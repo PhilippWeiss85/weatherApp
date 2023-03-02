@@ -4,7 +4,11 @@ import { useEffect, useRef } from "react";
 import Form from "./Form";
 import SearchItemList from "./SearchItemList";
 
-export default function Header({ handleSubmit, previousSearchItems }) {
+export default function Header({
+  handleSubmit,
+  previousSearchItems,
+  deleteSearchItem,
+}) {
   const container = useRef(null);
 
   useEffect(() => {
@@ -26,7 +30,10 @@ export default function Header({ handleSubmit, previousSearchItems }) {
         <Form handleSubmit={handleSubmit} />
 
         {console.log(previousSearchItems)}
-        <SearchItemList previousSearchitems={previousSearchItems} />
+        <SearchItemList
+          previousSearchitems={previousSearchItems}
+          deleteSearchItem={deleteSearchItem}
+        />
       </div>
     </header>
   );
