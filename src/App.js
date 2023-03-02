@@ -18,6 +18,7 @@ const baseUrl = "https://goweather.herokuapp.com/weather/";
 function App() {
   const [city, setCity] = useState();
   const [fetchError, setFetchError] = useState(false);
+  const [previousSearchItems, setPreviousSearchItems] = useState([]);
 
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, error, isLoading } = useSWR(
@@ -83,6 +84,19 @@ function App() {
   const fetchMessage = data?.message;
   console.log("fetchmessage", fetchMessage);
 
+  function addNewSearchItem(content) {
+    if (
+      previousSearchItems.includes(content) ||
+      previousSearchItems.length > 2
+    ) {
+      setPreviousSearchItems(previousSearchItems);
+    } else {
+      const newSearchItem = [content, ...previousSearchItems];
+      setPreviousSearchItems(newSearchItem);
+    }
+  }
+  console.log(previousSearchItems);
+
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -91,27 +105,10 @@ function App() {
     if (data.city === "undefined") {
       setCity(null);
     } else {
+      addNewSearchItem(data.city);
       setCity(data.city);
     }
   }
-
-  if (error)
-    return (
-      <>
-        <Header handleSubmit={handleSubmit} />
-        <Error />
-        <Footer />
-      </>
-    );
-
-  if (isLoading)
-    return (
-      <>
-        <Header handleSubmit={handleSubmit} />
-        <Loading />
-        <Footer />
-      </>
-    );
 
   // debounce function suchen für onChange event in form
 
@@ -121,9 +118,36 @@ function App() {
   let temperatureInt = parseInt(weather?.temperature);
   console.log(temperatureInt);
 
+  if (error)
+    return (
+      <>
+        <Header
+          handleSubmit={handleSubmit}
+          previousSearchItems={previousSearchItems}
+        />
+        <Error />
+        <Footer />
+      </>
+    );
+
+  if (isLoading)
+    return (
+      <>
+        <Header
+          handleSubmit={handleSubmit}
+          previousSearchItems={previousSearchItems}
+        />
+        <Loading />
+        <Footer />
+      </>
+    );
+
   return (
     <>
-      <Header handleSubmit={handleSubmit} />
+      <Header
+        handleSubmit={handleSubmit}
+        previousSearchItems={previousSearchItems}
+      />
       <main>
         <TodaysWeather
           fetchMessage={fetchMessage}

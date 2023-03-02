@@ -2,8 +2,9 @@ import "./Header.css";
 import lottie from "lottie-web";
 import { useEffect, useRef } from "react";
 import Form from "./Form";
+import SearchItemList from "./SearchItemList";
 
-export default function Header({ handleSubmit }) {
+export default function Header({ handleSubmit, previousSearchItems }) {
   const container = useRef(null);
 
   useEffect(() => {
@@ -23,6 +24,10 @@ export default function Header({ handleSubmit }) {
       <div className="header__container">
         <h1>Your weather app</h1>
         <Form handleSubmit={handleSubmit} />
+        <div>
+          {console.log(previousSearchItems)}
+          <SearchItemList previousSearchitems={previousSearchItems} />
+        </div>
       </div>
     </header>
   );

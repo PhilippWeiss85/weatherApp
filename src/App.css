@@ -161,3 +161,29 @@ h1 {
   text-underline-offset: 8px;
   width: 100%;
 }
+
+.searchitems {
+  display: flex;
+  gap: 1rem;
+  width: 400px;
+  overflow-x:scroll;
+  overflow-y:none;
+  margin-top: 1rem;
+  max-height: 2rem;
+  justify-content: center;
+}
+
+.searchitems__container {
+  display: block;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 5px; 
+
+ 
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  
+}
