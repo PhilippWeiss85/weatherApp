@@ -98,7 +98,9 @@ button {
 }
 
 .forecast__container {
-margin-top: 2rem
+margin-top: 2rem;
+
+
 }
 
 
@@ -164,7 +166,8 @@ h1 {
 
 .searchitems {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
+  padding: .5rem 0 .5rem 0;
   width: 400px;
   overflow-x:scroll;
   overflow-y:none;
@@ -174,12 +177,20 @@ h1 {
 }
 
 .searchitems__container {
-  display: block;
-  border: 1px solid black;
+  background: white;
   border-radius: 15px;
-  padding: 5px; 
+  padding: 5px;
+  position: relative;
+  
 
  
+}
+
+.searchItemsIcon {
+  position: absolute;
+  left: -10px;
+  top: -5px;
+
 }
 
 form {

@@ -21,9 +21,11 @@ function TodaysWeather({
       width: "100%",
       height: "100%",
       boxShadow: "0 0 9px 5px #fff,  0 0 15px #8198e5",
+      scale: 1,
     },
     closed: {
       opacity: 1,
+      scale: 0.8,
     },
   };
 
