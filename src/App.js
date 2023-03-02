@@ -12,6 +12,7 @@ import useSWR from "swr";
 import { useCallback, useState } from "react";
 
 import TodaysWeather from "./components/SWR/TodaysWeather";
+import SearchItemList from "./components/SearchItemList";
 
 const baseUrl = "https://goweather.herokuapp.com/weather/";
 
@@ -85,10 +86,12 @@ function App() {
   console.log("fetchmessage", fetchMessage);
 
   function addNewSearchItem(cityname) {
-    if (
-      previousSearchItems.includes(cityname.name) ||
-      previousSearchItems.length > 2
-    ) {
+    const prevItem = previousSearchItems.find((name) => {
+      return name.name;
+    });
+    console.log("prevItem", prevItem?.name);
+
+    if (prevItem?.name === cityname || previousSearchItems.length > 2) {
       setPreviousSearchItems(previousSearchItems);
     } else {
       const newSearchItem = [{ name: cityname }, ...previousSearchItems];
