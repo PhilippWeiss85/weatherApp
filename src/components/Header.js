@@ -24,10 +24,9 @@ export default function Header({ handleSubmit, previousSearchItems }) {
       <div className="header__container">
         <h1>Your weather app</h1>
         <Form handleSubmit={handleSubmit} />
-        <div>
-          {console.log(previousSearchItems)}
-          <SearchItemList previousSearchitems={previousSearchItems} />
-        </div>
+
+        {console.log(previousSearchItems)}
+        <SearchItemList previousSearchitems={previousSearchItems} />
       </div>
     </header>
   );

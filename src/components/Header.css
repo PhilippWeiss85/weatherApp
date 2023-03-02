@@ -13,7 +13,7 @@ header {
 @media(max-width: 640px) and (min-width: 421px) {
   header {
     height: 100px;
-    flex-wrap: wrap
+    flex-wrap: wrap;
   
     
 }
@@ -32,7 +32,9 @@ header {
 @media(max-width: 420px) and (min-width:  290px) {
   header {
     height: 160px;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
   
     
 }

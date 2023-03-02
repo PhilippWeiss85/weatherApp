@@ -6,8 +6,8 @@ function SearchItemList({ previousSearchitems }) {
   return (
     <section className="searchitems">
       {previousSearchitems?.map((item) => (
-        <>
-          <article className="searchitems__container" key={item}>
+        <div key={item}>
+          <article className="searchitems__container">
             <IconContext.Provider
               value={{
                 color: "red",
@@ -21,7 +21,7 @@ function SearchItemList({ previousSearchitems }) {
             </IconContext.Provider>
             {item}
           </article>
-        </>
+        </div>
       ))}
     </section>
   );
