@@ -1,5 +1,6 @@
 import { TiDeleteOutline } from "react-icons/ti";
 import { IconContext } from "react-icons";
+import DeleteButton from "./DeleteButton";
 
 function SearchItemList({ previousSearchitems }) {
   return (
@@ -14,7 +15,9 @@ function SearchItemList({ previousSearchitems }) {
                 className: "searchItemsIcon",
               }}
             >
-              <TiDeleteOutline />
+              <DeleteButton>
+                <TiDeleteOutline />
+              </DeleteButton>
             </IconContext.Provider>
             {item}
           </article>

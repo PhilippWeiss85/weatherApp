@@ -111,6 +111,17 @@ margin-top: 2rem;
 
 }
 
+button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+  
+}
+
 
 
 .forecast-headline:hover {
@@ -188,8 +199,8 @@ h1 {
 
 .searchItemsIcon {
   position: absolute;
-  left: -10px;
-  top: -5px;
+  left: -15px;
+  top: -6px;
 
 }
 
