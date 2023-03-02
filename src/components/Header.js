@@ -22,7 +22,7 @@ export default function Header({ handleSubmit, previousSearchItems }) {
     <header>
       <div className="container" ref={container}></div>
       <div className="header__container">
-        <h1>Your weather app</h1>
+        <h1>Weappther</h1>
         <Form handleSubmit={handleSubmit} />
 
         {console.log(previousSearchItems)}

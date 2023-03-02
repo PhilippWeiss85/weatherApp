@@ -13,7 +13,7 @@ function Form({ handleSubmit }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="city">Enter your City</label>
+      <label htmlFor="city">Enter your city</label>
       <fieldset>
         <input
           name="city"
