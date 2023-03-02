@@ -83,9 +83,15 @@ function TodaysWeather({
                   animate={isOpen ? "open" : "closed"}
                   variants={variants}
                 >
-                  <ExpandButton setIsOpen={setIsOpen}>
-                    <BiExpand /> Click to see forecast
-                  </ExpandButton>
+                  {isOpen !== true ? (
+                    <ExpandButton setIsOpen={setIsOpen}>
+                      <BiExpand /> Click to see forecast
+                    </ExpandButton>
+                  ) : (
+                    <ExpandButton setIsOpen={setIsOpen}>
+                      <BiExpand /> Collapse forecast
+                    </ExpandButton>
+                  )}
                   {isOpen && (
                     <div>
                       {weather.forecast?.map((day, index) => {

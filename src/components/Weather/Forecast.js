@@ -7,24 +7,24 @@ function Forecast({ day, tomorrow, tomorrowPlusOne, tomorrowPlusTwo }) {
             <div className="forecast-content">
               <p>{tomorrow}</p>
               <div className="forecast-content__values">
-                <p>{day.temperature}</p>
-                <p>{day.wind}</p>
+                <p>{day.temperature} degree</p>
+                <p>{day.wind} windspeed</p>
               </div>
             </div>
           ) : day.day === "2" ? (
             <div className="forecast-content">
               <p>{tomorrowPlusOne}</p>
               <div className="forecast-content__values">
-                <p>{day.temperature}</p>
-                <p>{day.wind}</p>
+                <p>{day.temperature} degree</p>
+                <p>{day.wind} windspeed</p>
               </div>
             </div>
           ) : (
             <div className="forecast-content">
               <p>{tomorrowPlusTwo}</p>
               <div className="forecast-content__values">
-                <p>{day.temperature}</p>
-                <p>{day.wind}</p>
+                <p>{day.temperature} degree</p>
+                <p>{day.wind} windspeed</p>
               </div>
             </div>
           )}
