@@ -1,16 +1,7 @@
 import { IconContext } from "react-icons";
 import { BiSearch } from "react-icons/bi";
-import { useState } from "react";
 
-function Form({ handleSubmit }) {
-  const [value, setValue] = useState("");
-
-  function handleChange(event) {
-    setValue(
-      event.target.value.charAt(0).toUpperCase() + event.target.value.slice(1)
-    );
-  }
-
+function Form({ handleSubmit, value, handleChange }) {
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="city">Enter your city</label>

@@ -2,17 +2,16 @@ import "./App.css";
 import Error from "./components/SWR/Error";
 import Loading from "./components/SWR/Loading";
 
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import sunnyIcon from "./icon_sunny.png";
-import cloudyIcon from "./icon_cloudy.png";
-import snowyIcon from "./icon_snow.png";
-import rainyIcon from "./icon_rain.png";
-import useSWR from "swr";
 import { useCallback, useState } from "react";
+import useSWR from "swr";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import cloudyIcon from "./icon_cloudy.png";
+import rainyIcon from "./icon_rain.png";
+import snowyIcon from "./icon_snow.png";
+import sunnyIcon from "./icon_sunny.png";
 
 import TodaysWeather from "./components/SWR/TodaysWeather";
-import SearchItemList from "./components/SearchItemList";
 
 const baseUrl = "https://goweather.herokuapp.com/weather/";
 
