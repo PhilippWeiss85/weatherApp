@@ -1,6 +1,6 @@
 import "./Header.css";
 import lottie from "lottie-web";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Form from "./Form";
 import SearchItemList from "./SearchItemList";
 
@@ -8,15 +8,11 @@ export default function Header({
   handleSubmit,
   previousSearchItems,
   deleteSearchItem,
+  handleChange,
+  value,
+  setValue,
 }) {
   const container = useRef(null);
-  const [value, setValue] = useState("");
-
-  function handleChange(event) {
-    setValue(
-      event.target.value.charAt(0).toUpperCase() + event.target.value.slice(1)
-    );
-  }
 
   useEffect(() => {
     const animation = lottie.loadAnimation({
@@ -33,7 +29,6 @@ export default function Header({
     <header>
       <div className="container" ref={container}></div>
       <div className="header__container">
-        <h1>Weappther</h1>
         <Form
           handleSubmit={handleSubmit}
           value={value}

@@ -19,6 +19,7 @@ function App() {
   const [city, setCity] = useState();
   const [fetchError, setFetchError] = useState(false);
   const [previousSearchItems, setPreviousSearchItems] = useState([]);
+  const [value, setValue] = useState("");
 
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, error, isLoading } = useSWR(
@@ -85,19 +86,23 @@ function App() {
   console.log("fetchmessage", fetchMessage);
 
   function addNewSearchItem(cityname) {
-    const prevItem = previousSearchItems.find((name) => {
+    const prevItem = previousSearchItems.filter((name) => {
       return name.name;
     });
-    console.log("prevItem", prevItem?.name);
+    console.log("prevItem", prevItem);
 
-    if (prevItem?.name === cityname || previousSearchItems.length > 2) {
+    if (
+      prevItem[0]?.name === cityname ||
+      prevItem[1]?.name === cityname ||
+      prevItem[2]?.name === cityname ||
+      previousSearchItems.length > 2
+    ) {
       setPreviousSearchItems(previousSearchItems);
     } else {
       const newSearchItem = [{ name: cityname }, ...previousSearchItems];
       setPreviousSearchItems(newSearchItem);
     }
   }
-  console.log(previousSearchItems);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -108,33 +113,37 @@ function App() {
     } else {
       addNewSearchItem(data.city);
       setCity(data.city);
+      setValue("");
     }
   }
 
-  function deleteSearchItem(id) {
-    console.log("name", id);
+  function handleChange(event) {
+    setValue(
+      event.target.value.charAt(0).toUpperCase() + event.target.value.slice(1)
+    );
+  }
 
-    const searchItemsAfterDeletion = previousSearchItems.filter((item) => {
-      return item.name !== id;
-    });
+  function deleteSearchItem(id) {
+    const searchItemsAfterDeletion = previousSearchItems.filter(
+      (item, index) => {
+        return index !== id;
+      }
+    );
     setPreviousSearchItems(searchItemsAfterDeletion);
   }
 
   // debounce function suchen für onChange event in form
-
-  let windspeedInt = parseInt(weather?.wind);
-  console.log(parseInt(windspeedInt));
-
-  let temperatureInt = parseInt(weather?.temperature);
-  console.log(temperatureInt);
 
   if (error)
     return (
       <>
         <Header
           handleSubmit={handleSubmit}
+          handleChange={handleChange}
           previousSearchItems={previousSearchItems}
           deleteSearchItem={deleteSearchItem}
+          value={value}
+          setValue={setValue}
         />
         <Error />
         <Footer />
@@ -146,8 +155,11 @@ function App() {
       <>
         <Header
           handleSubmit={handleSubmit}
+          handleChange={handleChange}
           previousSearchItems={previousSearchItems}
           deleteSearchItem={deleteSearchItem}
+          value={value}
+          setValue={setValue}
         />
         <Loading />
         <Footer />
@@ -158,8 +170,11 @@ function App() {
     <>
       <Header
         handleSubmit={handleSubmit}
+        handleChange={handleChange}
         previousSearchItems={previousSearchItems}
         deleteSearchItem={deleteSearchItem}
+        value={value}
+        setValue={setValue}
       />
       <main>
         <TodaysWeather

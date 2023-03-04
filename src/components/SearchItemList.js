@@ -16,7 +16,7 @@ function SearchItemList({ previousSearchitems, deleteSearchItem, setValue }) {
                 className: "searchItemsIcon",
               }}
             >
-              <DeleteButton deleteSearchItem={deleteSearchItem} id={item.name}>
+              <DeleteButton deleteSearchItem={deleteSearchItem} id={index}>
                 <TiDeleteOutline />
               </DeleteButton>
             </IconContext.Provider>
