@@ -108,6 +108,10 @@ function App() {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
+    if (data.city === "") {
+      alert("Please enter a city name");
+      return;
+    }
     if (data.city === "undefined") {
       setCity(null);
     } else {
